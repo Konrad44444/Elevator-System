@@ -9,7 +9,7 @@ System działa w trybie turowym. W każdej turze można wygenerować użytkownik
 Po otrzymaniu zgłoszenia przywołania windy, system wybiera odpowiednią windę na podstawie kierunku oraz piętra przywołania. System rozpatruje 4 przypadki:
   
   1. Na piętrze, z którego wystąpiło przywołanie znajduje się nieaktywna winda - ona zostanie przywołana (jeśli na piętrze jest więcej takich wind wybrana zostanie pierwsza).
-  2. Na piętrze nie ma wolnych wind. System szuka wtedy wind, które poruszają się w kierunku podanym przez użytkownika i mają jego piętro na swojej trasie. Zostaje przydzielona winda, która znajduje się najbliżej piętra przywołania (może być także na piętrze użytkownika).
+  2. Na piętrze nie ma wolnych wind. System szuka wtedy wind, które poruszają się w kierunku podanym przez użytkownika i mają jego piętro na swojej trasie (numery pięter). Zostaje przydzielona winda, która znajduje się najbliżej piętra przywołania (może być także na piętrze użytkownika).
   3. Windy poruszające się w odpowiednim kierunku minęły piętro, na którym wystąpiło przywołanie. System przydziela windę, która kończy swój obieg najbliżej piętra użytkownika.
   4. Żadna z wind nie porusza się w kierunku podanym przez użytkownika. System przydziela windę, której obieg kończy się najbliżej piętra użytkownika.
 
@@ -18,7 +18,7 @@ Po wyborze windy system zwraca informację o tym, która winda została przydzie
 #### Działanie windy
 Winda przechowuje informacje o swoim numerze ID (numery ID zaczynają się od 1), obecnym piętrze, aktualnym piętrze docelowym, kierunku w jakim się porusza, limicie osób, ilości pięter w budynku oraz o trasie, którą się porusza. Aby lepiej zasymulować działanie systemu, każda winda przy tworzeniu otrzymuje losowe wartości piętra obecnego oraz docelowego, dzięki czemu system nie jest statyczny. 
 
-Kiedy winda zostanie wezwana (przydzielona) do jej trasy zostaje dodane piętro, z którego nastąpiło wezwanie. W zależności od tego czy winda porusza się w górę czy w dół trasa (numery pięter) zostaje posortowana (odpowiednio do kierunku) rosnąco lub malejąco. Jeśli aktualne piętro windy pokrywa się z piętrem w trasie winda zatrzymuje się na jedną turę. W momencie przyjazdu na piętro winda wypusza ludzi (jeśli to ich docelowe piętro), w kolejnej turze wsiadają ludzie z piętra (jeśli to ich piętro wezwania, po wejściu osoby te wybierają piętro, na które chcą dojechać i trasa znowu jest odpoweidnio sortowana) i w kolejnej następuje ruch windy.
+Kiedy winda zostanie wezwana (przydzielona) do jej trasy zostaje dodane piętro, z którego nastąpiło wezwanie. W zależności od tego czy winda porusza się w górę czy w dół trasa zostaje posortowana (odpowiednio do kierunku) rosnąco lub malejąco. Jeśli aktualne piętro windy pokrywa się z piętrem w trasie winda zatrzymuje się na jedną turę. W momencie przyjazdu na piętro winda wypusza ludzi (jeśli to ich docelowe piętro), w kolejnej turze wsiadają ludzie z piętra (jeśli to ich piętro wezwania, po wejściu osoby te wybierają piętro, na które chcą dojechać i trasa znowu jest odpoweidnio sortowana) i w kolejnej następuje ruch windy.
 
 ## Interfejs systemu wind
 ```js
