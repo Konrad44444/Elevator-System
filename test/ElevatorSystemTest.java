@@ -58,6 +58,24 @@ public class ElevatorSystemTest {
         List<Elevator> elevatorList = List.of(e1, e2);
 
         // when
+        Elevator elevatorFound = elevatorList.get(ElevatorSystem.findNearestElevatorID(elevatorList, 2));
+
+        // then
+        assertEquals(elevatorFound.getId(), 1);
+    }
+
+    @Test
+    public void findNearestEndingElevatorIDTest() throws Exception {
+        // given
+        Elevator e1 = new Elevator(1, 4, 4);
+        e1.setDestinationFloor(1);
+
+        Elevator e2 = new Elevator(2, 4, 4);
+        e1.setDestinationFloor(4);
+
+        List<Elevator> elevatorList = List.of(e1, e2);
+
+        // when
         Elevator elevatorFound = elevatorList.get(ElevatorSystem.findNearestEndingElevatorID(elevatorList, 2));
 
         // then

@@ -13,8 +13,10 @@ public class ElevatorSystem {
 
     private static final Integer ELEVATOR_SIZE = 6;
 
+    // informacje o wszystkich windach
     private final List<Elevator> elevators;
 
+    // zapisanie informacji o tym, która winda została przydzielona użytkownikowi
     private Map<Elevator, List<Person>> elevatorPersonMap;
 
     public ElevatorSystem(Integer floors, Integer amountOfElevators) {
