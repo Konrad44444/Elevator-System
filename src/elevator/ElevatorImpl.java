@@ -5,10 +5,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import src.direction.Direction;
 import src.elevator_system.ElevatorSystem;
 import src.person.Person;
 
+@Getter
+@Setter
 public class ElevatorImpl implements Elevator {
     private final Integer id;
     private Integer currentFloor;
@@ -35,59 +40,6 @@ public class ElevatorImpl implements Elevator {
 
         this.limitOfPeople = limitOfPeople;
         this.maxFloor = maxFloor;
-    }
-
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public Integer getCurrentFloor() {
-        return this.currentFloor;
-    }
-
-    public void setCurrentFloor(Integer currentFloor) {
-        this.currentFloor = currentFloor;
-    }
-
-    public Integer getDestinationFloor() {
-        return this.destinationFloor;
-    }
-
-    public void setDestinationFloor(Integer destinationFloor) {
-        this.destinationFloor = destinationFloor;
-    }
-
-    public Direction getDirection() {
-        return this.direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    public Integer getLimitOfPeople() {
-        return this.limitOfPeople;
-    }
-
-    public List<Person> getPeopleInElevator() {
-        return this.peopleInElevator;
-    }
-
-    public void setPeopleInElevator(List<Person> peopleInElevator) {
-        this.peopleInElevator = peopleInElevator;
-    }
-
-    public Integer getMaxFloor() {
-        return this.maxFloor;
-    }
-
-    public List<Integer> getRoute() {
-        return this.route;
-    }
-
-    public void setRoute(List<Integer> route) {
-        this.route = route;
     }
 
 
