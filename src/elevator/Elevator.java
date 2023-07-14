@@ -8,6 +8,7 @@ import src.person.Person;
 public interface Elevator {
     void updateStatus();
     void addStop(Integer floor);
+    
     Integer getId();
     Integer getCurrentFloor();
     void setCurrentFloor(Integer currentFloor);
