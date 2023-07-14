@@ -8,21 +8,23 @@ import java.util.List;
 
 import org.junit.Test;
 
-import src.Elevator;
-import src.ElevatorSystem;   
+import src.elevator.Elevator;
+import src.elevator.ElevatorImpl;
+import src.elevator_system.ElevatorSystem;
+import src.elevator_system.ElevatorSystemImpl;   
     
 public class ElevatorSystemTest {
         
     @Test
     public void passValidDataToContructorThenOK() throws Exception {
-        assertDoesNotThrow(() -> new ElevatorSystem(10, 10));
+        assertDoesNotThrow(() -> new ElevatorSystemImpl(10, 10));
     }
 
     @Test
     public void passInvalidElevatorAmountThenException() throws Exception {
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new ElevatorSystem(10, -1)
+            () -> new ElevatorSystemImpl(10, -1)
         );
 
         assertEquals(exception.getMessage(), ElevatorSystem.INVALID_NUMBER_ELEVATORS);
@@ -32,7 +34,7 @@ public class ElevatorSystemTest {
     public void passInvalidFloorAmountThenException() throws Exception {
         IllegalArgumentException exception = assertThrows(
             IllegalArgumentException.class,
-            () -> new ElevatorSystem(-1, 10)
+            () -> new ElevatorSystemImpl(-1, 10)
         );
 
         assertEquals(exception.getMessage(), ElevatorSystem.INVALID_NUMBER_FLOORS);
@@ -42,17 +44,17 @@ public class ElevatorSystemTest {
     public void passBothInvalidDataThenException() throws Exception {
         assertThrows(
             IllegalArgumentException.class,
-            () -> new ElevatorSystem(-1, 100)
+            () -> new ElevatorSystemImpl(-1, 100)
         );
     }
 
     @Test
     public void findNearestElevatorIDTest() throws Exception {
         // given
-        Elevator e1 = new Elevator(1, 4, 4);
+        Elevator e1 = new ElevatorImpl(1, 4, 4);
         e1.setCurrentFloor(1);
 
-        Elevator e2 = new Elevator(2, 4, 4);
+        Elevator e2 = new ElevatorImpl(2, 4, 4);
         e1.setCurrentFloor(4);
 
         List<Elevator> elevatorList = List.of(e1, e2);
@@ -67,10 +69,10 @@ public class ElevatorSystemTest {
     @Test
     public void findNearestEndingElevatorIDTest() throws Exception {
         // given
-        Elevator e1 = new Elevator(1, 4, 4);
+        Elevator e1 = new ElevatorImpl(1, 4, 4);
         e1.setDestinationFloor(1);
 
-        Elevator e2 = new Elevator(2, 4, 4);
+        Elevator e2 = new ElevatorImpl(2, 4, 4);
         e1.setDestinationFloor(4);
 
         List<Elevator> elevatorList = List.of(e1, e2);
@@ -84,7 +86,7 @@ public class ElevatorSystemTest {
 
     @Test
     public void testGetElevatorByIdWhenInvalidIdPassed() throws Exception {
-        ElevatorSystem elevatorSystem = new ElevatorSystem(10, 10);
+        ElevatorSystem elevatorSystem = new ElevatorSystemImpl(10, 10);
 
         assertAll(
             () -> assertThrows(IllegalArgumentException.class, () -> elevatorSystem.getElevatorById(-1)),

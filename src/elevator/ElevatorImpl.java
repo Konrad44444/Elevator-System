@@ -1,11 +1,15 @@
-package src;
+package src.elevator;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Elevator {
+import src.direction.Direction;
+import src.elevator_system.ElevatorSystem;
+import src.person.Person;
+
+public class ElevatorImpl implements Elevator {
     private final Integer id;
     private Integer currentFloor;
     private Integer destinationFloor;
@@ -16,7 +20,7 @@ public class Elevator {
     private List<Integer> route = new ArrayList<>();
 
 
-    public Elevator(Integer id, Integer limitOfPeople, Integer maxFloor) {
+    public ElevatorImpl(Integer id, Integer limitOfPeople, Integer maxFloor) {
         this.id = id;
 
         // początkowe wartości pięter dla windy są losowane

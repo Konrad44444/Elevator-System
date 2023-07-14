@@ -2,6 +2,13 @@ package src;
 import java.util.Random;
 import java.util.Scanner;
 
+import src.direction.Direction;
+import src.elevator.Elevator;
+import src.elevator_system.ElevatorSystem;
+import src.elevator_system.ElevatorSystemDataPrinter;
+import src.elevator_system.ElevatorSystemImpl;
+import src.person.Person;
+
 public class Main {
     private static final String INSERT_ELEVATORS_AMOUNT = "Podaj ilość wind (od 2 do 16): ";
     private static final String INSERT_FLOORS_AMOUNT = "Podaj ilość pięter w budynku (min. 4): ";
@@ -41,8 +48,8 @@ public class Main {
 
 
         // --- działanie programu
-        ElevatorSystem elevatorSystem = new ElevatorSystem(floorsAmount, elevatorsAmount);
-        elevatorSystem.printAllElevatorsStatus();   
+        ElevatorSystem elevatorSystem = new ElevatorSystemImpl(floorsAmount, elevatorsAmount);
+        ElevatorSystemDataPrinter.printAllElevatorsStatus(elevatorSystem);   
 
         boolean loop = true;
 
@@ -92,19 +99,19 @@ public class Main {
                     Person person = new Person(yourFloor, chosenFloor);
                     elevatorSystem.addPersonToQueue(elevatorCalled, person);
 
-                    elevatorSystem.printCalledElevatorInfo(elevatorCalled);
+                    ElevatorSystemDataPrinter.printCalledElevatorInfo(elevatorCalled);
 
                     break;
 
                 case 2: 
                     elevatorSystem.checkWaitingPeople();
                     elevatorSystem.makeSimulationStep();
-                    elevatorSystem.printAllElevatorsStatus();
+                    ElevatorSystemDataPrinter.printAllElevatorsStatus(elevatorSystem); 
                     break;
 
                 case 3:
                     System.out.print(GET_ELEVATOR_ID);
-                    elevatorSystem.printElevatorStatus(scanner.nextInt());
+                    ElevatorSystemDataPrinter.printElevatorStatus(elevatorSystem, scanner.nextInt());
 
                     break;
                 

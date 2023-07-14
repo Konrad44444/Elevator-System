@@ -6,11 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
-import src.Direction;
-import src.Elevator;    
+import src.direction.Direction;
+import src.elevator.Elevator;    
+import src.elevator.ElevatorImpl;    
     
 public class ElevatorTest {
-    private Elevator elevator = new Elevator(1, 4, 4);
+    private Elevator elevator = new ElevatorImpl(1, 4, 4);
         
     @Test
     public void testAddStop() {

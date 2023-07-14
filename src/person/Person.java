@@ -1,4 +1,4 @@
-package src;
+package src.person;
 
 import java.util.Objects;
 
