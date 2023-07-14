@@ -117,7 +117,7 @@ public class Elevator {
             
             // znalezienie wszystkich ludzi z piętrem docelowym równym aktualnemu piętru windy
             List<Person> peopleToLeave = peopleInElevator.stream()
-                .filter(person -> person.getDestinationFloor().equals(currentFloor))
+                .filter(person -> person.destinationFloor().equals(currentFloor))
                 .collect(Collectors.toList());
 
             //  "wyjście" ludzi z windy

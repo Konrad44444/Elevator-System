@@ -112,18 +112,18 @@ public class Main {
                     Person generatedPerson = generatePerson(floorsAmount);
 
                     // określenie kierunku
-                    if(generatedPerson.getStartFloor() < generatedPerson.getDestinationFloor()) {
+                    if(generatedPerson.startingFloor() < generatedPerson.destinationFloor()) {
                         direction = Direction.UP;
                     } else {
                         direction = Direction.DOWN;
                     } 
 
                     // wezwanie windy i dodanie windy do kolejki
-                    elevatorCalled = elevatorSystem.callAnElevator(direction, generatedPerson.getStartFloor());
-                    elevatorCalled.addStop(generatedPerson.getStartFloor());
+                    elevatorCalled = elevatorSystem.callAnElevator(direction, generatedPerson.destinationFloor());
+                    elevatorCalled.addStop(generatedPerson.startingFloor());
                     elevatorSystem.addPersonToQueue(elevatorCalled, generatedPerson);
 
-                    System.out.println(GENERATED_PERSON_INFO + generatedPerson.getStartFloor() + " - " + generatedPerson.getDestinationFloor() + " " + ELEVATOR_CALLED_INFO + elevatorCalled.getId());
+                    System.out.println(GENERATED_PERSON_INFO + generatedPerson.startingFloor() + " - " + generatedPerson.destinationFloor() + " " + ELEVATOR_CALLED_INFO + elevatorCalled.getId());
 
                     break;
 

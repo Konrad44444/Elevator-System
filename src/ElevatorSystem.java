@@ -188,10 +188,10 @@ public class ElevatorSystem {
 
             for(int i = 0; i < listPerson.size(); i++) {
                 Person person = listPerson.get(i);
-                if(person.getStartFloor().equals(elevator.getCurrentFloor())) {
+                if(person.startingFloor().equals(elevator.getCurrentFloor())) {
                     // "osoba wsiada i klika numer piętra na które chce dojechać"
                     elevator.getPeopleInElevator().add(person);
-                    elevator.addStop(person.getDestinationFloor());
+                    elevator.addStop(person.destinationFloor());
 
                     // usunięcie osoby z kolejki - zmiejszy się rozmiar kolejki więc i--
                     elevatorPersonMap.get(elevator).remove(person);
